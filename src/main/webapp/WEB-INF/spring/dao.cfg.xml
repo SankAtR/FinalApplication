@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean
+		class="com.hibernate.model.dao.daoarchitecture.HibernateCustomBeanFactory"
+		id="hibernateCustomBeanFactory" />
+	<bean id="UserDAO"
+		class="com.hibernate.model.dao.daoarchitecture.GenericHibernateDAOImpl">
+		<property name="baseClass" value="com.sanket.application.pojo.User" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="AuthorityDAO"
+		class="com.hibernate.model.dao.daoarchitecture.GenericHibernateDAOImpl">
+		<property name="baseClass" value="com.sanket.application.pojo.Authority" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="UserDetailsDAO"
+		class="com.hibernate.model.dao.daoarchitecture.GenericHibernateDAOImpl">
+		<property name="baseClass" value="com.sanket.application.pojo.UserDetails" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>
